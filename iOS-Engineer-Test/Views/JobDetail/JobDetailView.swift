@@ -133,7 +133,7 @@ struct InfoRow: View {
     }
 }
 
-private extension String {
+extension String {
     func strippingHTML() -> String {
         guard let data = data(using: .utf8) else { return self }
         let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [

@@ -111,6 +111,8 @@ final class JobListViewModel: ObservableObject {
     // MARK: - Private helpers
 
     private func fetchAndReset() async {
+        // Yield once so the first @Published mutation never fires inside a view update cycle.
+        await Task.yield()
         state = .loading
         jobs = []
         allJobs = []

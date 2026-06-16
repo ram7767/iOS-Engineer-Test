@@ -31,10 +31,8 @@ struct JobListView: View {
                     }
                 }
             }
-            .onAppear {
-                guard !didLoad else { return }
-                didLoad = true
-                Task { await viewModel.loadJobs() }
+            .task {
+                await viewModel.loadJobs()
             }
             .refreshable { await viewModel.refresh() }
         }

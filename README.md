@@ -96,17 +96,20 @@ xcrun xccov view --report /tmp/TestResults.xcresult
 | `iOS_Engineer_TestApp.swift` | 100% |
 | `JobListViewModel.swift` | 97% |
 | `JobService.swift` | 97% |
+| `JobDetailView.swift` | 97% |
+| `StateView.swift` | 98% |
+| `JobCardView.swift` | 98% |
+| `Job.swift` | 96% |
 | `ImageCacheService.swift` | 93% |
 | `CategoryFilterView.swift` | 93% |
 | `AsyncImageView.swift` | 93% |
-| `Job.swift` | 96% |
-| `JobCardView.swift` | 96% |
-| `JobListView.swift` | 87% |
-| **Total (app target)** | **~65%** |
+| `SavedJobsView.swift` | 91% |
+| `JobListView.swift` | 86% |
+| **Total (app target)** | **94%** |
 
-> Note: SwiftUI view bodies (`JobDetailView`, `SavedJobsView`, `StateView`) are measured as executable lines by `xccov` but cannot be covered by unit tests. All non-view business logic (ViewModels, Services, Models) achieves ≥93% coverage. UI tests with XCUITest would push total above 80%.
+> SwiftUI view bodies are covered by rendering them via `UIHostingController` in unit tests — no ViewInspector dependency required.
 
-**Test suite:** 78 tests, 0 failures
+**Test suite:** 95 tests, 0 failures
 
 | Test File | What it covers |
 |-----------|---------------|
@@ -117,6 +120,7 @@ xcrun xccov view --report /tmp/TestResults.xcresult
 | `SavedJobsServiceTests` | CRUD, deduplication, UserDefaults persistence, publisher |
 | `JobServiceTests` | Fetch+decode, caching, server errors, bad JSON |
 | `ImageCacheServiceTests` | Invalid URL, clearCache, concurrent requests |
+| `ViewRenderingTests` | Renders all SwiftUI views via UIHostingController; covers view bodies, strippingHTML |
 
 ---
 
